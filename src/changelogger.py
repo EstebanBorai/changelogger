@@ -46,3 +46,5 @@ def get_commits():
     save_current_commit()
 
   return commits
+
+print(get_commits())
