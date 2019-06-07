@@ -1,19 +1,18 @@
 import re
 
-class Chronology:
-  commits = None
-  commit_days = {}
+def get_date(commit_date):
+  date_str = re.findall(r'[^Date:]([A-Za-z]{3})[\s]([0-9]{1,2})[\s](?:[\d]{2}[\:][\d]{2}[\:][\d]{2}[\s])([0-9]{4})', commit_date)
+  return date_str
 
-  def __init__(self, commits):
-    self.commits = commits
+def get_by_date(commits):
+  # FIXME: Key Error 
 
-  def get_date(self, commit_date):
-    date_str = re.findall(r'[^Date:]([A-Za-z]{3})[\s]([0-9]{1,2})[\s](?:[\d]{2}[\:][\d]{2}[\:][\d]{2}[\s])([0-9]{4})', commit_date)
-    return date_str
+  commits_by_date = {}
+  for commit in commits:
+    date = get_date(commit['date'])[0]
+    date_str = f'{date[0]}_{date[1]}_{date[2]}'
 
-  def get_by_date(self):
-    if self.commits == None:
-      raise Exception("Commits are None")
-    
-    for commit in self.commits:
-      commit
+    if commits_by_date[date_str] == None:
+      commits_by_date[date_str] = [].append(commit)
+    else:
+      commits_by_date[date_str].append(commit)

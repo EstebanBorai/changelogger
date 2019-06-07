@@ -39,6 +39,3 @@ def __normalize(log_output):
 def get_commits():
   commits = __git_log()
   return __normalize(commits)
-
-
-print(get_commits())

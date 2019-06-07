@@ -1,9 +1,8 @@
-from changelogger import get_commits
-from manage_files import checkout
+from helpers.get_commits import get_commits
+from helpers.chronology import get_by_date
 
 def init():
-  checkout()
-  # commits = get_commits()
-  # print(commits)
+  commits = get_commits()
+  print(get_by_date(commits))
 
 init()
