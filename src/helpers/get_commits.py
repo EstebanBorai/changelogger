@@ -4,7 +4,7 @@ import re
 
 def __git_log():
   bash_response = subprocess.check_output(
-    ['git', 'log'], stderr=subprocess.STDOUT
+    ['git', 'log', '--date=short'], stderr=subprocess.STDOUT
   ).decode(sys.stdout.encoding)
   
   return str(bash_response).split('\n')

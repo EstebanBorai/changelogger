@@ -1,18 +1,22 @@
 import re
+from datetime import datetime
 
-def get_date(commit_date):
-  date_str = re.findall(r'[^Date:]([A-Za-z]{3})[\s]([0-9]{1,2})[\s](?:[\d]{2}[\:][\d]{2}[\:][\d]{2}[\s])([0-9]{4})', commit_date)
-  return date_str
+def remove_date_from(commit):
+  try:
+    del commit['date']
+    return commit
+  except KeyError:
+    pass
 
 def get_by_date(commits):
-  # FIXME: Key Error 
-
   commits_by_date = {}
   for commit in commits:
-    date = get_date(commit['date'])[0]
-    date_str = f'{date[0]}_{date[1]}_{date[2]}'
+    date_str = commit['date']
 
-    if commits_by_date[date_str] == None:
-      commits_by_date[date_str] = [].append(commit)
+    if date_str in commits_by_date:
+      commits_by_date[date_str].append(remove_date_from(commit))
     else:
-      commits_by_date[date_str].append(commit)
+      commit_list = list()
+      commit_list.append(remove_date_from(commit))
+      commits_by_date[date_str] = commit_list
+  return commits_by_date
