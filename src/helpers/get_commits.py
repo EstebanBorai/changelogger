@@ -33,7 +33,9 @@ def __normalize(log_output):
         else:
           commit_message = re.compile('^    ').sub('', line)
           current['message'] = commit_message
-  
+
+  # appends the first commit in the log
+  commits.append(current)
   return commits
   
 def get_commits():
