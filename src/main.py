@@ -1,8 +1,9 @@
 from helpers.get_commits import get_commits
-from helpers.chronology import get_by_date
+from helpers.chronologize import chronologize
+from helpers.tokenize import tokenize
 
 def init():
   commits = get_commits()
-  print(get_by_date(commits))
+  tokenize(commits)
 
 init()
