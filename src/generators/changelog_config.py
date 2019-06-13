@@ -8,8 +8,9 @@ def default_config():
   append_keyword('Added', ['Add', 'Added'])
   append_keyword('Changed', ['Change', 'Changed'])
   append_keyword('Deprecated',  ['Deprecate', 'Deprecated'])
+  append_keyword('Enhance', ['Enhance', 'Enhanced'])
   append_keyword('Fixed', ['Fix', 'Fixed'])
   append_keyword('Removed', ['Remove', 'Removed'])
-  append_keyword('Security', ['Security'])
+  append_keyword('Security', ['Security', 'Secured'])
 
   return config

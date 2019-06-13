@@ -14,14 +14,17 @@ class Tokenize:
 
     for _, token_items in self.tokens.items():
       for tkn in token_items:
-        all_tokens.append(tkn)
+        all_tokens.append(tkn.lower())
     
     self.token_list = all_tokens
 
   def __get_token_parent(self, token):
+    token_p = None
     for token_parent in self.tokens.keys():    
-      if token in self.tokens[token_parent]:
-        return token_parent
+      if token.capitalize() in self.tokens[token_parent]:
+        token_p = token_parent
+    
+    return token_p
 
   def __resolve_token(self, date_commits):
     aggregate = {
@@ -29,17 +32,21 @@ class Tokenize:
     }
     
     for commit in date_commits:
-      for token in self.token_list:
-        if token.lower() in commit['message'].lower().split():
-          token_parent = self.__get_token_parent(token)
-          if token_parent in aggregate:
-            aggregate[token_parent].append(commit)
-          else:
-            token_list = list()
-            aggregate[token_parent] = token_list
-            aggregate[token_parent].append(commit)
+      try:
+        token = next(t.lower() for t in commit['message'].lower().split() if t.lower() in self.token_list)
+        token_parent = self.__get_token_parent(token)
+        if token_parent in aggregate:
+          aggregate[token_parent].append(commit)
         else:
-          aggregate['Misc'].append(commit)
+          token_list = list()
+          aggregate[token_parent] = token_list
+          aggregate[token_parent].append(commit)
+      except StopIteration:
+        aggregate['Misc'].append(commit)
+        pass
+
+    if len(aggregate['Misc']) is 0:
+      del aggregate['Misc']
 
     return aggregate
 
