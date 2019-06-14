@@ -60,6 +60,3 @@ class Tokenize:
       results[date] = self.__resolve_token(date_commits)
 
     return results
-
-  # {'Added': ['Add', 'Added'], 'Changed': ['Change', 'Changed'], 'Deprecated': ['Deprecate', 'Deprecated'], 
-  # 'Fixed': ['Fix', 'Fixed'], 'Removed': ['Remove', 'Removed'], 'Security': ['Security']}
