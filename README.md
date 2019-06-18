@@ -1,2 +1,2 @@
 # changelogger
-Changelog generator based on commit messages
+📝 Changelog generator based on commit messages
