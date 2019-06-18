@@ -1,4 +1,4 @@
-from manage_files import read_config
+from helpers.manage_files import read_config
 from helpers.chronologize import chronologize
 
 class Tokenize:

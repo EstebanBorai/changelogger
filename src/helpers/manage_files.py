@@ -17,7 +17,13 @@ def read_config():
     with open(changelog_config_dir, 'w') as new_config_file:
       json.dump(default_config(), new_config_file, indent=2)
 
-read_config()
+def read_changelog():
+  print(f'Reading CHANGELOG from {changelog_dir}')
+  try:
+    with open(changelog_dir, 'r') as changelog:
+      return changelog.read()
+  except IOError:
+    print(f'CHANGELOG not found at {changelog_dir}')
 
 def checkout():
   try:

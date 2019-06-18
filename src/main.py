@@ -1,6 +1,6 @@
 from helpers.get_commits import get_commits
 from helpers.chronologize import chronologize
-from helpers.Tokenize import Tokenize
+from helpers.tokenize import Tokenize
 
 def init():
   commits = get_commits()
