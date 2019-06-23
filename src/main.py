@@ -1,10 +1,3 @@
-from helpers.get_commits import get_commits
-from helpers.chronologize import chronologize
-from helpers.tokenize import Tokenize
+from helpers.init_prompt import init_prompt
 
-def init():
-  commits = get_commits()
-  t = Tokenize(commits)
-  print(t.tokenize())
-
-init()
+init_prompt()
