@@ -3,7 +3,7 @@ import json
 import os
 
 current_directory = os.getcwd()
-changelog_dir = f'{current_directory}/CHANGELOG'
+changelog_dir = f'{current_directory}/CHANGELOG.md'
 changelog_config_dir = f'{current_directory}/changelogger.config.json'
 
 def read_config():
