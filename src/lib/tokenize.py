@@ -1,5 +1,5 @@
-from helpers.manage_files import read_config
-from helpers.chronologize import chronologize
+from lib.manage_files import read_config
+from lib.chronologize import chronologize
 
 class Tokenize:
   tokens = None

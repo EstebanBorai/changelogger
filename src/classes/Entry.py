@@ -29,21 +29,3 @@ class Entry:
 			entry_str += f'### {change_type}\n'
 			for change in self.changes[change_type]:
 				entry_str += f'- {change}\n'
-
-		print(entry_str)
-
-
-
-today = datetime.datetime.now()
-changes = {
-	"Added": [
-		"Add capability to create entries"
-	],
-	"Changed": [
-		"Changed 'tu hermana' name",
-		"Changed privacy policy"
-	]
-}
-
-entry = Entry("0.1.0", today, changes)
-entry.to_changelog()

@@ -1,4 +1,4 @@
-from helpers.manage_files import read_changelog
+from lib.manage_files import read_changelog
 
 def get_changelog():
   data = read_changelog()
