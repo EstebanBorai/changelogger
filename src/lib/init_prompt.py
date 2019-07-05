@@ -1,6 +1,6 @@
 from lib.get_commits import get_commits
 from lib.chronologize import chronologize
-from lib.tokenize import Tokenize
+from lib.Extract import Extract
 from lib.get_changelog import get_changelog
 
 def init_prompt(args):

@@ -1,7 +1,7 @@
 from lib.manage_files import read_config
 from lib.chronologize import chronologize
 
-class Tokenize:
+class Extract:
   tokens = None
   token_list = None
   commits = None
