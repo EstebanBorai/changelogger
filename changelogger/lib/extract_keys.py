@@ -1,4 +1,4 @@
-from changelogger.lib.chronologize import chronologize
+from lib.chronologize import chronologize
 
 def extract_keys(tokens, commits):
 	"""
@@ -17,19 +17,19 @@ def extract_keys(tokens, commits):
 
 	for date in commit_dates:
 		date_commits = chronologized_commits[date]
-		results[date] = __resolve_token(date_commits)
+		results[date] = __resolve_token(date_commits, token_list, tokens)
 
 	return results
 
 def __get_token_parent(token, tokens):
 	token_p = None
 	for token_parent in tokens.keys():
-		if token.capitalize() in tokens[token_parent]
+		if token.capitalize() in tokens[token_parent]:
 			token_p = token_parent
 	
 	return token_p
 
-def __resolve_token(date_commits, token_list):
+def __resolve_token(date_commits, token_list, tokens):
 	aggregate = {
 		'Misc': []
 	}
@@ -37,7 +37,7 @@ def __resolve_token(date_commits, token_list):
 	for commit in date_commits:
 		try:
 			token = next(t.lower() for t in commit['message'].lower().split() if t.lower() in token_list)
-			token_parent = __get_token_parent(token)
+			token_parent = __get_token_parent(token, tokens)
 			if token_parent in aggregate:
 				aggregate[token_parent].append(commit)
 			else:
