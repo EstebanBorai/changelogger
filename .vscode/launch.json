@@ -15,7 +15,7 @@
       "name": "Python: Main",
       "type": "python",
       "request": "launch",
-      "program": "${workspaceFolder}/src/changelogger.py",
+      "program": "${workspaceFolder}/src/",
       "console": "integratedTerminal"
     }
   ]
