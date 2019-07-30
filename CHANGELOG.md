@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased - 2019-07-30]
 ### Misc
 - Create CHANGELOG with Unreleased changes
+### Fixed
+- Fix CHANGELOG file extension
 
 ## [Unreleased - 2019-07-29]
 ### Added

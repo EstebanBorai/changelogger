@@ -27,18 +27,16 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).\n\n"""
 
-	def __normalized_commits(self):
-		commits = get_commits()
-		all_keys = extract_keys(self.config['tokens'], commits)
-		self.commits = all_keys
-
 	def __gather_versions(self):
 		tags = get_tags()
 
 		if len(tags) is 0:
 			print('Theres no versions for the current repository.')
 			print('All commits will be treated as "Unreleased"')
-			self.__normalized_commits()
+			commits = get_commits()
+			all_keys = extract_keys(self.config['tokens'], commits)
+			self.commits = all_keys
+
 			for changes_date in self.commits:
 				entry = Entry(None, changes_date)
 				for change_type in self.commits[changes_date]:
