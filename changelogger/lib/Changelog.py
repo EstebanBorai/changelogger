@@ -55,7 +55,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 			Creates CHANGELOG file in the current working directory (cwd)
 		"""
 		cwd = os.getcwd()
-		changelog_file_dir = f'{cwd}/CHANGELOG'
+		changelog_file_dir = f'{cwd}/CHANGELOG.md'
 		try:
 			with open(changelog_file_dir, 'r') as changelog:
 				changelog.write(file_str)
