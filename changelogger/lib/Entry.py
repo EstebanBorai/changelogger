@@ -6,19 +6,14 @@ class Entry:
 		entries. An entry indexes every change made to
 		the project with date and category.
 	"""
-	version = ''
-	date = None
-	changes = dict()
-
 	def __init__(self, version, date):
-		self.version = version
-		self.date = date
+		if version is None:
+			self.version = 'Unreleased'
+		else:
+			self.version = version
 
-	def __changelog_date(self):
-		"""
-			Returns a "YYYY-MM-DDD" formatted date
-		"""
-		return self.date.strftime("%Y-%m-%d")
+		self.date = date
+		self.changes = dict()
 
 	def __changelog_header(self):
 		"""
@@ -26,7 +21,7 @@ class Entry:
 			Sample:
 			[v1.0.1] - 2019-07-26
 		"""
-		return f'## [{self.version} - {self.__changelog_date()}]'
+		return f'## [{self.version} - {self.date}]'
 
 	def append_change(self, change_t, change_line):
 		"""
@@ -42,7 +37,7 @@ class Entry:
 			self.changes[change_t] = list()
 			self.changes[change_t].append(change_line)
 
-	def create_changelog(self):
+	def __str__(self):
 		"""
 			Creates the entry and returns it as a string.
 		"""

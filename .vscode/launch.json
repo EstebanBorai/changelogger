@@ -17,6 +17,14 @@
       "request": "launch",
       "program": "${workspaceFolder}/src/",
       "console": "integratedTerminal"
+		},
+		{
+      "name": "Python: changelogger --init",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/changelogger/",
+			"console": "integratedTerminal",
+			"args": ["--init"]
     }
   ]
 }
